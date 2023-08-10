@@ -1,0 +1,25 @@
+# Maven
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+
+variables:
+  LT_USERNAME: 'varunkumarb'
+  LT_ACCESS_KEY: 'doLbtRzYpWdpD1xxcIQdByQ1b7kmqMNg43DrpsYwGxbPBtphNU'
+  LT_BUILD_NAME: 'Azure_testng_demo'
+
+# Maven
+steps:
+#- task: configuration@1
+#  inputs:
+#    connection: 'my-config'
+#    isTunnelActivate: false
+- task: Maven@3
+- task: LambdatestResults@1
