@@ -20,7 +20,7 @@ public class AndroidApp {
     public String gridURL = "@mobile-hub.lambdatest.com/wd/hub";
 
     AppiumDriver driver;
-    String build = os.getenv("LT_BUILD_NAME");
+    String build = System.getenv("LT_BUILD_NAME");
 
     @Test
     @org.testng.annotations.Parameters(value = {"device", "version", "platform"})
