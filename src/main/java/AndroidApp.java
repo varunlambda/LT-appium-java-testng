@@ -45,6 +45,8 @@ public class AndroidApp {
             String hub = "https://varunkumarb:GhGShOYHz1jODWE9qDvkJK4nPDR3n2lc0gNp9VknalhwtUineG" + gridURL;
             driver = new AppiumDriver(new URL(hub), capabilities);
 
+            System.out.println(capabilities);
+
             MobileElement color = (MobileElement) driver.findElementById("com.lambdatest.proverbial:id/color");
             //Changes color to pink
             color.click();
