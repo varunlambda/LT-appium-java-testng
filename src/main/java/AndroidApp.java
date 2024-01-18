@@ -6,6 +6,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+import os;
 
 import java.net.URL;
 import java.util.List;
@@ -20,20 +21,21 @@ public class AndroidApp {
     public String gridURL = "@mobile-hub.lambdatest.com/wd/hub";
 
     AppiumDriver driver;
+    String build = os.getenv("LT_BUILD_NAME");
 
     @Test
     @org.testng.annotations.Parameters(value = {"device", "version", "platform"})
     public void AndroidApp1(String device, String version, String platform) {
         try {
             DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability("build","Java TestNG Android");
+            capabilities.setCapability("build", build);
             capabilities.setCapability("name",platform+" "+device+" "+version);
             capabilities.setCapability("deviceName", device);
             capabilities.setCapability("platformVersion",version);
             capabilities.setCapability("platformName", platform);
             capabilities.setCapability("isRealMobile", true);
             //AppURL (Create from Wikipedia.apk sample in project)
-            capabilities.setCapability("app", "APP_URL"); //Enter your app url
+            capabilities.setCapability("app", "lt://APP1016029691704450197909703"); //Enter your app url
             capabilities.setCapability("deviceOrientation", "PORTRAIT");
             capabilities.setCapability("console", true);
             capabilities.setCapability("network", false);
