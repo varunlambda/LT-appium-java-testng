@@ -42,7 +42,7 @@ public class AndroidApp {
             capabilities.setCapability("devicelog", true);
             //capabilities.setCapability("geoLocation", "HK");
 
-            String hub = "https://" + userName + ":" + accessKey + gridURL;
+            String hub = "https://varunkumarb:GhGShOYHz1jODWE9qDvkJK4nPDR3n2lc0gNp9VknalhwtUineG" + gridURL;
             driver = new AppiumDriver(new URL(hub), capabilities);
 
             MobileElement color = (MobileElement) driver.findElementById("com.lambdatest.proverbial:id/color");
