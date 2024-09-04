@@ -17,18 +17,10 @@ variables:
 
 # Maven
 steps:
-#- task: configuration@1
-#  inputs:
-#    connection: 'my-config'
-#    isTunnelActivate: false
-- task: Maven@4
+- task: configuration@1
   inputs:
-    mavenPomFile: 'pom.xml'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    javaHomeOption: 'JDKVersion'
-    mavenVersionOption: 'Default'
-    mavenAuthenticateFeed: false
-    effectivePomSkip: false
-    sonarQubeRunAnalysis: false
+   connection: 'tunnelVarun'
+
+- task: Maven@4
+
 - task: LambdatestResults@1
