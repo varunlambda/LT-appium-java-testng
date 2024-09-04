@@ -19,8 +19,8 @@ variables:
 steps:
 - task: configuration@1
   inputs:
-   connection: 'tunnelVarun'
-
-- task: Maven@4
+    mavenPomFile: 'pom.xml'
+    goals: 'clean test'
+    options: '-P android-single'  # Specify Maven profile
 
 - task: LambdatestResults@1
