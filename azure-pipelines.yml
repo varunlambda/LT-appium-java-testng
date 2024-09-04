@@ -4,7 +4,9 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
-- master
+  branches:
+    include:
+      - master
 
 pool:
   vmImage: 'windows-latest'
@@ -17,10 +19,7 @@ variables:
 
 # Maven
 steps:
-- task: configuration@1
-  inputs:
-    mavenPomFile: 'pom.xml'
-    goals: 'mvn clean test'
-    options: '-P android-single'  # Specify Maven profile
+- script: mvn test -P android-single
+  displayName: 'Run Android Tests'
 
 - task: LambdatestResults@1
