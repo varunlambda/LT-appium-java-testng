@@ -20,7 +20,7 @@ steps:
 - task: configuration@1
   inputs:
     mavenPomFile: 'pom.xml'
-    goals: 'clean test'
+    goals: 'mvn clean test'
     options: '-P android-single'  # Specify Maven profile
 
 - task: LambdatestResults@1
