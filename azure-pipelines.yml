@@ -19,6 +19,11 @@ variables:
 
 # Maven
 steps:
+- task: configuration@1
+  inputs:
+    connection: 'tunnelVarun'
+    isTunnelActivate: true
+    tunnelOptions: 'Varun'
 - script: mvn test -P android-single
   displayName: 'Run Android Tests'
 
