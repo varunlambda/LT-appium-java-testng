@@ -34,15 +34,11 @@ steps:
   displayName: 'Run Android Tests'
 
 - task: LambdatestResults@1
-- task: DownloadPipelineArtifact@2
-  inputs:
-    buildType: 'specific'
-    project: '273b3140-3faa-4ec6-a9ed-f121e7f8f457'
-    definition: '15'
-    buildVersionToDownload: 'latest'
-    allowPartiallySucceededBuilds: true
-    artifactName: 'tunnel_log'
-    targetPath: '$(Pipeline.Workspace)/a.log'
+
+- script: |
+   copy a.log $(Build.ArtifactStagingDirectory)\a.log
+  displayName: 'Command Line Script'
+  condition: always()
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
