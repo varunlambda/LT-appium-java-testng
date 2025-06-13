@@ -22,7 +22,7 @@ steps:
 - task: configuration@1
   inputs:
     connection: 'tunnelVarun'
-    tunnelOptions: '{"verbose": true, "allowHosts": "lambdatest.com"}'
+    tunnelOptions: '{"verbose": true, "allowHosts": "lambdatest.com", "logfile": "a.log"}'
     isTunnelActivate: true
 
 - script: |
@@ -34,3 +34,18 @@ steps:
   displayName: 'Run Android Tests'
 
 - task: LambdatestResults@1
+- task: DownloadPipelineArtifact@2
+  inputs:
+    buildType: 'specific'
+    project: '273b3140-3faa-4ec6-a9ed-f121e7f8f457'
+    definition: '15'
+    buildVersionToDownload: 'latest'
+    allowPartiallySucceededBuilds: true
+    artifactName: 'tunnel_log'
+    targetPath: '$(Pipeline.Workspace)/a.log'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  continueOnError: true
+  condition: always()
+  retryCountOnTaskFailure: 1
