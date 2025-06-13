@@ -22,7 +22,14 @@ steps:
 - task: configuration@1
   inputs:
     connection: 'tunnelVarun'
+    tunnelOptions: '{"verbose": true, "allowHosts": "lambdatest.com"}'
     isTunnelActivate: true
+
+- script: |
+    echo Executing curl upload...
+    curl -vvv lambdatest.com
+  displayName: 'Checking accessibility of the application'
+
 - script: mvn test -P android-single
   displayName: 'Run Android Tests'
 
