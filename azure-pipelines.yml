@@ -22,7 +22,7 @@ steps:
 - task: configuration@1
   inputs:
     connection: 'tunnelVarun'
-    tunnelOptions: '{"verbose": true, "allowHosts": "lambdatest.com", "logfile": "a.log", "log-level": "debug"}'
+    tunnelOptions: '{"verbose": true, "logfile": "a.log", "log-level": "debug"}'
     isTunnelActivate: true
 
 - script: |
